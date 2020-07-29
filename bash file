@@ -1,0 +1,25 @@
+#! /bin/bash
+ $1
+if [ -e $1 ]
+then
+     x=$(echo $1 | cut -d'.' -f 3)
+     y=$(echo $1 | cut -d'.' -f 2)
+         if [ "$x" == "zip" ] || [ "$y" == "zip" ]
+         then
+         unzip $1
+        elif [ "$x" == "gz" ] || [ $x == "tgz"]
+        then
+         tar xvzf $1
+       elif [ "$x" == "xz" ]
+     then
+    tar -xvf $1
+       elif [ "$x" == "bz2" ] || [ "$y" == "bz2" ]
+     then
+     tar xvjf $1
+elif [ "$y" == "tar" ] 
+then
+ tar -xvf $1
+fi
+else
+echo "error"
+fi
